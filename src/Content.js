@@ -9,31 +9,50 @@ const handleNameChange = () => {
   return name[int]
 } */
 const Content = () => {
-  const [name, setName] = useState('Asia');
-  const [count, setCount] = useState(0)
+  const [items, setItems] = useState([
+    {
+      id: 1,
+      checked: false,
+      item: 'cocoa beans'
+    },
+
+    {
+      id: 2,
+      checked: false,
+      item: 'red beans'
+    },
+
+    {
+      id: 3,
+      checked: false,
+      item: 'green beans'
+
+    }
+  ]);
+  
 
 
-    const handleNameChange = () => {
-        const names = ['mushy', 'bruce', 'asia', 'jim',];
-        const int = Math.floor(Math.random() * 4);
-        setName(names[int])
-      }
 
-      const handleClick = () => {
-        setCount(count + 1)
-        console.log(count)
-      }
-      const handleClick2 = (name) => {
-        console.log( `${name} is great` )
-      }
       
   return (
     <main>
-        <p>
-        HI {name}
-        </p>
-        <button onClick={handleNameChange}>Click</button>
-        <button onClick={handleClick}>Click</button>
+       <ul>
+        {items.map((item) => (
+          <li className='item' key={item.id}>
+            <input
+              type='checkbox'
+              checked={item.checked}
+            />
+            <label>
+              {item.item}
+            </label>
+            <button>
+              Delete
+            </button>
+
+          </li>
+        ))}
+       </ul>
     </main>
   )
 }
