@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState } from 'react';
-
+import {FaTrashAlt} from 'react-icons/fa'
 
 /* 
 const handleNameChange = () => {
@@ -30,7 +30,11 @@ const Content = () => {
     }
   ]);
   
-
+const handleCheck = (id) => {
+  const listItems = items.map((item) => item.id === id ? {...item, checked: !items.checked} : item)
+  setItems(listItems);
+  localStorage.setItem('shoppinglist', JSON.stringify(listItems))
+}
 
 
       
@@ -41,15 +45,19 @@ const Content = () => {
           <li className='item' key={item.id}>
             <input
               type='checkbox'
+              onChange={()=> handleCheck(item.id)}
               checked={item.checked}
             />
-            <label>
+            <label  style={(item.checked) ? {}} onDoubleClick={()=> handleCheck(item.id)}>
+             
+
+
               {item.item}
             </label>
-            <button>
-              Delete
-            </button>
-
+            <FaTrashAlt 
+               role='button' 
+               tabIndex='0'
+            />   
           </li>
         ))}
        </ul>
