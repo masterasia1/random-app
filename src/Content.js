@@ -36,6 +36,9 @@ const handleCheck = (id) => {
   localStorage.setItem('shoppinglist', JSON.stringify(listItems))
 }
 
+const handleDelete = (id) => {
+
+
 
       
   return (
@@ -48,13 +51,14 @@ const handleCheck = (id) => {
               onChange={()=> handleCheck(item.id)}
               checked={item.checked}
             />
-            <label  style={(item.checked) ? {}} onDoubleClick={()=> handleCheck(item.id)}>
+            <label  style={(item.checked) ? {textDecoration: 'line-through'} : null } onDoubleClick={()=> handleCheck(item.id)}>
              
 
 
               {item.item}
             </label>
-            <FaTrashAlt 
+            <FaTrashAlt
+              onClick={} 
                role='button' 
                tabIndex='0'
             />   
